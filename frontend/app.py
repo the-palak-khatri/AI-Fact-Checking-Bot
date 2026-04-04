@@ -84,7 +84,7 @@ if st.button("Check Fact"):
 
             try:
                 response = requests.post(
-                    "http://localhost:8000/fact-check",
+                    "https://ai-fact-checking-bot.onrender.com/fact-check",
                     json={
                         "text": query,
                         "custom_context": all_extracted_text
