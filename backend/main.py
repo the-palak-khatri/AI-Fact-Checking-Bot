@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from backend.rag_pipeline import check_fact
 from typing import Optional
 
+
 # Create a FastAPI instance
 app = FastAPI()
 

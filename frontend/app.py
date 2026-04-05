@@ -20,7 +20,7 @@ st.set_page_config(page_title="AI Fact Checker", layout="centered")
 
 # Title
 st.title("AI Fact Checker")
-st.markdown("Verify claims using AI + document-based reasoning")
+st.markdown("**Verify claims using AI + document-based reasoning**")
 
 # Sidebar
 st.sidebar.title("About")
@@ -38,20 +38,20 @@ uploaded_files = st.sidebar.file_uploader(
 )
 
 # Example queries
-st.markdown("**Try these example claims:**")
+st.markdown("*Try these example claims:*")
 
 # Category 1: Document-Specific (Testing Larry Stewart & Specs)
-st.write("🔍 **Document Analysis:**")
+st.write("**Document Analysis:**")
 st.write("- Larry Stewart's company was founded after a Thanksgiving accident.")
 st.write("- The Glow-Watch battery lasts for 500 hours.")
 
 # Category 2: Data & Tables (Testing CSV logic)
-st.write("📊 **Data Verification:**")
+st.write("**Data Verification:**")
 st.write("- The price of Widget B is exactly 25.50.")
 st.write("- Widget A is cheaper than Widget B.")
 
 # Category 3: General Knowledge (Testing FAISS/Vector DB)
-st.write("🌐 **General Knowledge:**")
+st.write("**General Knowledge:**")
 st.write("- Nuclear energy is one of the safest forms of energy production.")
 st.write("- You can still get a sunburn on a cloudy day.")
 
@@ -91,11 +91,11 @@ if st.button("Check Fact"):
                     }
                 )
 
-                st.write(response)
+                # st.write(response)
 
                 data = response.json()
-                st.write("Full API response:", data)
-                st.write("API keys", data.keys())
+                # st.write("Full API response:", data)
+                # st.write("API keys", data.keys())
                 
                 llm_data = data.get("llm_response", {})
 
