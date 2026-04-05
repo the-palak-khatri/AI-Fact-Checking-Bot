@@ -11,9 +11,29 @@ warnings.filterwarnings("ignore", category=UserWarning)
 warnings.filterwarnings("ignore", message="Accessing __path__ from")
 
 # Add the project root (parent dir of `frontend`) so `backend` is importable
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.rag_pipeline import extract_text_from_file
+# from .rag_pipeline import extract_text_from_file
+
+BACKEND_URL = "https://ai-fact-checking-bot.onrender.com/fact-check"
+
+def call_fact_checker(input_text):
+    try:
+        # Sending the data to your deployed backend
+        response = requests.post(
+            BACKEND_URL,
+            json={"text": input_text},
+            timeout=30
+        )
+
+        if response.status_code == 200:
+            return response.json()
+        else:
+            st.error(f"Backend Error: {response.status_code}")
+            return None
+    except Exception as e:
+        st.error(f"Could not connect to backend: {e}")
+        return None 
 
 # Page config
 st.set_page_config(page_title="AI Fact Checker", layout="centered")

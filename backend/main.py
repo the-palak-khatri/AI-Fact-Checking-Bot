@@ -16,6 +16,12 @@ class FactCheckRequest(BaseModel):
 def read_root():
     return {"Hello": "AI Fact Checker is running!!"}
 
+@app.get("/health")
+def health():
+    return {
+        "status":"alive"
+    }
+
 # Endpoint for checking data
 @app.post("/fact-check")
 async def check(message: FactCheckRequest):
