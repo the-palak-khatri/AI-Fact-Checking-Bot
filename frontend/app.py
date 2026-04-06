@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore", message="Accessing __path__ from")
 
 # from .rag_pipeline import extract_text_from_file
 
-BACKEND_URL = "https://huggingface.co/spaces/genz-learner/AI-Fact-Checking-Bot"
+BACKEND_URL = "https://genz-learner-ai-fact-checking-bot.hf.space/check"
 
 def call_fact_checker(input_text):
     try:
