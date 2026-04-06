@@ -1,4 +1,4 @@
-from data import documents
+from backend.data import documents
 from sentence_transformers import SentenceTransformer
 import numpy as np
 import faiss
