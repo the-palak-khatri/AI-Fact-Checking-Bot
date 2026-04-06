@@ -2,7 +2,16 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from rag_pipeline import check_fact
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_origins=["*"],
+    allow_origins=["*"],
+)
 
 # Create a FastAPI instance
 app = FastAPI()
