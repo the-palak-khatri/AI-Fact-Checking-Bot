@@ -4,6 +4,7 @@ import sys
 import os
 import warnings
 
+
 # Suppress Deprecation Warnings from transformers/streamlit
 os.environ["TRANSFORMERS_VERBOSITY"] = "error"
 os.environ["TOKENIZERS_PARALLELISM"] = "false" 
@@ -13,7 +14,7 @@ warnings.filterwarnings("ignore", message="Accessing __path__ from")
 # Add the project root (parent dir of `frontend`) so `backend` is importable
 # sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# from .rag_pipeline import extract_text_from_file
+from rag_pipeline import extract_text_from_file
 
 BACKEND_URL = "https://genz-learner-ai-fact-checking-bot.hf.space/check"
 
