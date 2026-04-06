@@ -1,7 +1,7 @@
 from data import documents
-#from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer
 import numpy as np
-#import faiss
+import faiss
 from groq import Groq
 import os
 from dotenv import load_dotenv
@@ -16,26 +16,26 @@ load_dotenv()
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # Load Embedding Model
-#model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Convert Knowledge Base to Embeddings
-#kb_embeddings = model.encode(documents)
+kb_embeddings = model.encode(documents)
 
 # Convert to numpy array
-#kb_embeddings = np.array(kb_embeddings)
+kb_embeddings = np.array(kb_embeddings)
 
 # Create FAISS Index
-#dimension = kb_embeddings.shape[1]
+dimension = kb_embeddings.shape[1]
 
 # Initialize Gemini Model
 # llm = genai.GenerativeModel("gemini-2-flash")
 MODEL_NAME = "llama-3.3-70b-versatile"
 
 # L2 distance index (Euclidean distance)
-#index = faiss.IndexFlatL2(dimension)
+index = faiss.IndexFlatL2(dimension)
 
 # Add embeddings to index
-#index.add(kb_embeddings)
+index.add(kb_embeddings)
 
 # Cache Definition
 cache = {}
@@ -62,12 +62,12 @@ def extract_text_from_file(file_content, file_type):
 # Fact Checking Function 
 async def check_fact(user_input: str, custom_context: str = ""):
     # Check cache FIRST
-    # if user_input in cache:
-        # return cache[user_input]
+    if user_input in cache:
+        return cache[user_input]
 
     # Convert user query to embedding
-    #query_vector = model.encode([user_input])
-    #query_vector = np.array(query_vector)
+    query_vector = model.encode([user_input])
+    query_vector = np.array(query_vector)
 
     # Search top k similar results
     k = 2
