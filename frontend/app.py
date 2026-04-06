@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore", message="Accessing __path__ from")
 
 # from .rag_pipeline import extract_text_from_file
 
-BACKEND_URL = "https://ai-fact-checking-bot.onrender.com/fact-check"
+BACKEND_URL = "https://huggingface.co/spaces/genz-learner/AI-Fact-Checking-Bot"
 
 def call_fact_checker(input_text):
     try:
@@ -104,7 +104,7 @@ if st.button("Check Fact"):
 
             try:
                 response = requests.post(
-                    "https://ai-fact-checking-bot.onrender.com/fact-check",
+                    BACKEND_URL,
                     json={
                         "text": query,
                         "custom_context": all_extracted_text
